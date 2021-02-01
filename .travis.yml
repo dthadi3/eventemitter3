@@ -30,10 +30,7 @@ matrix:
         - SAUCE_USERNAME=eventemitter3
         - SCRIPT=test-browser
 before_install:
-     - |
-        if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
-        sudo npm update -D 
-        fi
+        -   sudo npm update -D 
 script:
   - "npm run ${SCRIPT}"
 after_success:
