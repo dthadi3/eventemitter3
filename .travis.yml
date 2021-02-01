@@ -2,17 +2,17 @@ language: node_js
 matrix:
   fast_finish: true
   include:
-    - node_js: "14"
-      env: SCRIPT=test
-    - node_js: "12"
-      env: SCRIPT=test
-    - node_js: "10"
-      env: SCRIPT=test
-    - node_js: "12"
-      env:
-        - secure: TgXbhcemKQTLl5+OdTMZyn3yNFgn2qqwpt8LccI8KVGfCKRHnKLOUE1PYXQi9tPRS5N+ofzHKzMVh5/2bfm3hCsihH0n6ItoWLLyd5BjcBWTp862wG4Dvgqq7dVofnf4eSVk34VYtqaKfszypRQ8UGvj/X48j5ANElU7OP4iIPg=
-        - SAUCE_USERNAME=eventemitter3
-        - SCRIPT=test-browser
+          #    - node_js: "14"
+          #      env: SCRIPT=test
+          #    - node_js: "12"
+          #      env: SCRIPT=test
+      #    - node_js: "10"
+      #      env: SCRIPT=test
+      #    - node_js: "12"
+      #      env:
+              #        - secure: TgXbhcemKQTLl5+OdTMZyn3yNFgn2qqwpt8LccI8KVGfCKRHnKLOUE1PYXQi9tPRS5N+ofzHKzMVh5/2bfm3hCsihH0n6ItoWLLyd5BjcBWTp862wG4Dvgqq7dVofnf4eSVk34VYtqaKfszypRQ8UGvj/X48j5ANElU7OP4iIPg=
+              #        - SAUCE_USERNAME=eventemitter3
+          #        - SCRIPT=test-browser
 #Added power jobs
     - node_js: "14"
       arch: ppc64le
@@ -29,6 +29,11 @@ matrix:
         - secure: TgXbhcemKQTLl5+OdTMZyn3yNFgn2qqwpt8LccI8KVGfCKRHnKLOUE1PYXQi9tPRS5N+ofzHKzMVh5/2bfm3hCsihH0n6ItoWLLyd5BjcBWTp862wG4Dvgqq7dVofnf4eSVk34VYtqaKfszypRQ8UGvj/X48j5ANElU7OP4iIPg=
         - SAUCE_USERNAME=eventemitter3
         - SCRIPT=test-browser
+before_install:
+     - |
+        if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
+        sudo npm update -D 
+        fi
 script:
   - "npm run ${SCRIPT}"
 after_success:
