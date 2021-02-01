@@ -30,7 +30,7 @@ matrix:
         - SAUCE_USERNAME=eventemitter3
         - SCRIPT=test-browser
 before_install:
-        -   sudo npm update -D 
+        - npm update --save-dev 
 script:
   - "npm run ${SCRIPT}"
 after_success:
